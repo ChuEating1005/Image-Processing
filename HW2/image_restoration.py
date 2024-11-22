@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 """
 TODO Part 1: Motion blur PSF generation
@@ -226,38 +226,38 @@ def main():
         print("Method: Other restoration algorithm")
         print("PSNR = {}\n".format(compute_PSNR(img_original, other_img)))
 
-        # cv2.imshow("window", np.hstack([img_blurred, wiener_img, cls_img, other_img]))
-        # cv2.waitKey(0)
+        cv2.imshow("window", np.hstack([img_blurred, wiener_img, cls_img, other_img]))
+        cv2.waitKey(0)
 
-        methods = ["Wiener", "CLS", "Lucy-Richardson"]
-        for j in range(3):
-            fig, axs = plt.subplots(1, 3, figsize=(15, 4))
-            if j == 0:
-                fig.suptitle(f"Image Restoration: Wiener Filtering (length={LENGTH}, angle={ANGLE}, K={K})", fontsize=16)
-            elif j == 1:
-                fig.suptitle(f"Image Restoration: CLS Filtering (length={LENGTH}, angle={ANGLE}, gamma={GAMMA})", fontsize=16)
-            else:
-                fig.suptitle(f"Image Restoration: Lucy-Richardson Deconvolution (length={LENGTH}, angle={ANGLE}, num_iterations={NUM_ITERATIONS})", fontsize=16)
+        # methods = ["Wiener", "CLS", "Lucy-Richardson"]
+        # for j in range(3):
+        #     fig, axs = plt.subplots(1, 3, figsize=(15, 4))
+        #     if j == 0:
+        #         fig.suptitle(f"Image Restoration: Wiener Filtering (length={LENGTH}, angle={ANGLE}, K={K})", fontsize=16)
+        #     elif j == 1:
+        #         fig.suptitle(f"Image Restoration: CLS Filtering (length={LENGTH}, angle={ANGLE}, gamma={GAMMA})", fontsize=16)
+        #     else:
+        #         fig.suptitle(f"Image Restoration: Lucy-Richardson Deconvolution (length={LENGTH}, angle={ANGLE}, num_iterations={NUM_ITERATIONS})", fontsize=16)
 
-            axs[0].imshow(cv2.cvtColor(img_blurred, cv2.COLOR_BGR2RGB))
-            axs[0].set_title("Blurred Image")
-            axs[0].axis("off")
-            axs[1].imshow(cv2.cvtColor(img_original, cv2.COLOR_BGR2RGB))
-            axs[1].set_title("Original Image")
-            axs[1].axis("off")
-            if j == 0:
-                axs[2].imshow(cv2.cvtColor(wiener_img, cv2.COLOR_BGR2RGB))
-                axs[2].set_title("Wiener Filtered Image")
-            elif j == 1:
-                axs[2].imshow(cv2.cvtColor(cls_img, cv2.COLOR_BGR2RGB))
-                axs[2].set_title("CLS Filtered Image")
-            else:
-                axs[2].imshow(cv2.cvtColor(other_img, cv2.COLOR_BGR2RGB))
-                axs[2].set_title("Other Filtered Image")
-            axs[2].axis("off")
+        #     axs[0].imshow(cv2.cvtColor(img_blurred, cv2.COLOR_BGR2RGB))
+        #     axs[0].set_title("Blurred Image")
+        #     axs[0].axis("off")
+        #     axs[1].imshow(cv2.cvtColor(img_original, cv2.COLOR_BGR2RGB))
+        #     axs[1].set_title("Original Image")
+        #     axs[1].axis("off")
+        #     if j == 0:
+        #         axs[2].imshow(cv2.cvtColor(wiener_img, cv2.COLOR_BGR2RGB))
+        #         axs[2].set_title("Wiener Filtered Image")
+        #     elif j == 1:
+        #         axs[2].imshow(cv2.cvtColor(cls_img, cv2.COLOR_BGR2RGB))
+        #         axs[2].set_title("CLS Filtered Image")
+        #     else:
+        #         axs[2].imshow(cv2.cvtColor(other_img, cv2.COLOR_BGR2RGB))
+        #         axs[2].set_title("Other Filtered Image")
+        #     axs[2].axis("off")
             
-            plt.tight_layout()
-            plt.savefig(f"output/image_restoration/testcase{i}_{methods[j]}.png")
+        #     plt.tight_layout()
+        #     plt.savefig(f"output/image_restoration/testcase{i}_{methods[j]}.png")
 
 if __name__ == "__main__":
     main()

@@ -26,7 +26,6 @@ def gamma_correction(img, gamma):
 TODO Part 2: Histogram equalization
 """
 def histogram_equalization(img, mode):
-    # Convert to grayscale if the image is colored
     if mode == "BGR":
         B, G, R = cv2.split(img)
 
@@ -160,7 +159,6 @@ def main():
 
     cv2.imshow("Contrast enhancement", np.vstack([img, contrast_enhanced_img]))
     cv2.waitKey(0)
-    cv2.imwrite("output/image_enhancement/contrast_enhanced_img.png", contrast_enhanced_img)
 
     # fig, axs = plt.subplots(1, 2, figsize=(10, 5))
     # fig.tight_layout()
